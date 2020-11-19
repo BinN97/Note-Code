@@ -12,3 +12,9 @@ ps:
 排查半天，对照官方文档才发现不需要自己新建一个Go文件夹，直接解压到/usr/local路径下即可
 
 长时间不学ubuntu连路径都搞错了。。。
+
+安装完键入go env有输出即正确安装，接下来在visual studio code中安装go插件，需要科学上网，以及设置一下代理，即可正确安装。
+```
+go env -w GOSUMDB=off
+go env -w GOPROXY=https://goproxy.cn,direct
+```
