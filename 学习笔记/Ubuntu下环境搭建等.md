@@ -11,8 +11,6 @@ ps:
 
 排查半天，对照官方文档才发现不需要自己新建一个Go文件夹，直接解压到/usr/local路径下即可
 
-长时间不学ubuntu连路径都搞错了。。。
-
 ps:
 /home/username/.profile、/home/username/.bashrc和/etc/profile的区别
 
