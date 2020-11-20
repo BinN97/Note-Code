@@ -1,6 +1,10 @@
 [COSMOS简介](#COSMOS简介)
 
 [区块链](#区块链)
+
+[COSMOS:更为广泛的区块链生态系统](#COSMOS:更为广泛的区块链生态系统)
+
+[Tendermint BFT和ABCI](#Tendermint BFT和ABCI)
 # COSMOS简介
 <b>COSMOS是一个独立并行区块链的去中心化网络，每个区块链都由Tendermint这样的BFT算法构建。</b>
 
@@ -31,7 +35,7 @@
 + Consensus： 保证节点对系统状态达成一致
 + Networking：交易和共识相关消息传播
 
-# COSMOS 构建更为广泛的区块链生态系统
+# COSMOS:更为广泛的区块链生态系统
 +1.0 比特币
 开发去中心化应用方案
   + 分叉比特币代码库
@@ -70,5 +74,22 @@ Tendermint BFT引擎通过ABCI（Application Blockchain Interface)套接字（So
 特点：
 + 公私链无限制：Tendermint BFT只处理区块链网络和共识，负责传播交易和验证添加到区块链，验证机制可由开发者定制
 + 高性能：Tendermint BFT每秒可处理千笔交易
-+ 即时最终确定性（Instant finality）：只要有超过1/3的验证者是诚实的，就不会出错，用户可确保交易一旦创建即有效（比特币、以太坊多少区块后确认）
-+ 安全：
++ 即时最终确定性（Instant finality）：只要超过2/3的验证者是诚实的，就不会出错，用户可确保交易一旦创建即有效（比特币、以太坊多少区块后确认）
++ 安全：Tendermint共识具备容错性，同时还有问责机制
+
+# COSMOS SDK与其他应用层框架
+![Cosmos w'waSDK](https://i.loli.net/2020/11/20/qI5ePLdhOGUYbvX.png)
+Tendermint BFT简化<b>区块链</b>开发，而借助COSMOS SDK可以构建一个ABCI应用来实现ABCI协议，即简化在Tendermint BFT上开发<b>区块链应用</b>。
++ 模块化：Cosmos SDK旨在创建一个生态系统，允许开发人员轻松的开发出特定区块链，无需为从头开始编写每个功能。任何人都可以在SDK中编写或引用现成的模块。例如，Tendermint团队为Cosmos Hub构建所需的模块。同时，开发在可以借助模块来定义其新的功能需求，随着Cosmos生态系统的扩大，SDK创建区块链应用程序将会变得更容易。
++ 基于功能的安全性：对模块之间的安全进行约束。
+
+总结：Cosmos SDK允许开发者在Tendermint BFT上进行构建应用，将来也可以应用于其它实现ABCI协议的共识引擎之上，共同拓展Cosmos的生态系统。
+
+## Ethermint
+Cosmos SDK模块化的功能支持开发者将现有的区块链移植到其上，Ethermint就是一个例子，原理与标准以太坊（Go）完全一致，具有Tendermint BFT的共识属性，以太坊的所有工具（Truffle、Metamask等）均可在Ethermint使用，智能合约也能快速移植过来。
+
+# IBC：链接区块链
+区块链间通信协议（Inter-Blockchain Conmunication Procotol，IBC）借助Tendermint共识的“即时最终性”，实现区块链之间的连接，进行数据传播和价值转换。
+
+## 异构链
+
