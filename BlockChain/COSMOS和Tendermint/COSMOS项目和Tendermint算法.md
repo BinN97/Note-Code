@@ -1,10 +1,10 @@
-[COSMOS简介](# COSMOS简介)
+[COSMOS简介](#COSMOS简介)
 
-[区块链](# 区块链)
+[区块链](#区块链)
 
-[COSMOS:更为广泛的区块链生态系统](# COSMOS:更为广泛的区块链生态系统)
+[COSMOS:更为广泛的区块链生态系统](#COSMOS:更为广泛的区块链生态系统)
 
-[Tendermint BFT和ABCI](# Tendermint BFT和ABCI)
+[Tendermint BFT和ABCI](#Tendermint BFT和ABCI)
 
 # COSMOS简介
 <b>COSMOS是一个独立并行区块链的去中心化网络，每个区块链都由Tendermint这样的BFT算法构建。</b>
@@ -64,6 +64,7 @@ COSMOS通过一系列工具来实现让人们构建自定义、安全、可扩�
 + IBC：区块链之间的通信协议，允许区块链进行交互（数据和价值交换）
 
 # Tendermint BFT和ABCI
+
 以太坊借助虚拟机区块链，来简化DApp的开发流程，通过智能合约自行部署逻辑。但是区块链本身的开发并未简化，就像比特币一样，Ethereum仍然是耦合性较高的系统，这也是创建Tendermint的背景。
 
 Tendermint BFT通过将区块链网络和共识机制打包成通用引擎的解决方案，确保开发者无需关注复杂的底层协议，集中于应用程序的开发，省下大量的时间。
