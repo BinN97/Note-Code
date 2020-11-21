@@ -4,8 +4,6 @@
 
 [COSMOS:更为广泛的区块链生态系统](#COSMOS:更为广泛的区块链生态系统)
 
-[Tendermint BFT和ABCI](#Tendermint BFT和ABCI)
-
 # COSMOS简介
 <b>COSMOS是一个独立并行区块链的去中心化网络，每个区块链都由Tendermint这样的BFT算法构建。</b>
 
