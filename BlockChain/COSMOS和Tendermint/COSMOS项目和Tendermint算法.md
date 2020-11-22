@@ -2,13 +2,13 @@
 
 [区块链](#区块链)
 
-[COSMOS:更为广泛的区块链生态系统](#COSMOS-更为广泛的区块链生态系统)
+[COSMOS:更为广泛的区块链生态系统](#COSMOS：更为广泛的区块链生态系统)
 
 [Tendermint BFT和ABCI](#Tendermint-BFT和ABCI)
 
 [COSMOS SDK与其他应用层框架](#COSMOS-SDK与其他应用层框架)
 
-[IBC 链接区块链](#IBC-链接区块链)
+[IBC 链接区块链](#IBC：链接区块链)
 
 [总结](#总结)
 
@@ -42,7 +42,7 @@
 + Consensus： 保证节点对系统状态达成一致
 + Networking：交易和共识相关消息传播
 
-# COSMOS:更为广泛的区块链生态系统
+# COSMOS：更为广泛的区块链生态系统
 + 1.0 比特币
 开发去中心化应用方案
   + 分叉比特币代码库
@@ -101,7 +101,7 @@ Ethermint将以太坊虚拟机转换为Cosmos-SDK模块，通过与其他Cosmos�
 问题:既然能在已有的区块链上部署去中心化应用，为什么还要用Cosmos DDK来创建区块链？
 
 主要还是上面讲到的，一是开发区块链更为困难，其次还有灵活性、安全性、性能和主权方面的优势。
-# IBC:链接区块链
+# IBC：链接区块链
 区块链间通信协议（Inter-Blockchain Conmunication Procotol，IBC）借助Tendermint共识的“即时最终性”，实现区块链之间的连接，进行数据传播和价值转换。
 
 ## 异构链
@@ -122,6 +122,9 @@ Ethermint将以太坊虚拟机转换为Cosmos-SDK模块，通过与其他Cosmos�
 
 另一种就是类似Cosmos提出的模块化结构，主要包含:Hubs和Zones，前者是为链接Zones单独设计的区块链，可以访问所有链接到它的Zone，后者就是需要链接的异构链。这样建立的链接代价就会大大降低。Hubs可以有效防范双花问题。
 ![](https://i.loli.net/2020/11/22/hknaegVWvOc2JMp.png)
+
+通过多个hub连接
+![](https://i.loli.net/2020/11/22/uLUck2YmI7pqXRW.png)
 
 Cosmos的第一个Hub称为Cosmos Hub，属于权益证明（POS)链，原生代币为ATOM，支持与不同token转换。
 
