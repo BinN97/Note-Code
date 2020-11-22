@@ -85,7 +85,7 @@ Tendermint BFT引擎通过ABCI（Application Blockchain Interface)套接字（So
 + 即时最终确定性（Instant finality）：只要超过2/3的验证者是诚实的，就不会出错，用户可确保交易一旦创建即有效（比特币、以太坊多少区块后确认）
 + 安全：Tendermint共识具备容错性，同时还有问责机制
 
-# COSMOS-SDK与其他应用层框架
+# COSMOS SDK与其他应用层框架
 ![Cosmos w'waSDK](https://i.loli.net/2020/11/20/qI5ePLdhOGUYbvX.png)
 Tendermint BFT简化<b>区块链</b>开发，而借助COSMOS SDK可以构建一个ABCI应用来实现ABCI协议，即简化在Tendermint BFT上开发<b>区块链应用</b>。
 + 模块化：Cosmos SDK旨在创建一个生态系统，允许开发人员轻松的开发出特定区块链，无需为从头开始编写每个功能。任何人都可以在SDK中编写或引用现成的模块。例如，Tendermint团队为Cosmos Hub构建所需的模块。同时，开发在可以借助模块来定义其新的功能需求，随着Cosmos生态系统的扩大，SDK创建区块链应用程序将会变得更容易。
@@ -101,7 +101,7 @@ Ethermint将以太坊虚拟机转换为Cosmos-SDK模块，通过与其他Cosmos�
 问题:既然能在已有的区块链上部署去中心化应用，为什么还要用Cosmos DDK来创建区块链？
 
 主要还是上面讲到的，一是开发区块链更为困难，其次还有灵活性、安全性、性能和主权方面的优势。
-# IBC-链接区块链
+# IBC:链接区块链
 区块链间通信协议（Inter-Blockchain Conmunication Procotol，IBC）借助Tendermint共识的“即时最终性”，实现区块链之间的连接，进行数据传播和价值转换。
 
 ## 异构链
