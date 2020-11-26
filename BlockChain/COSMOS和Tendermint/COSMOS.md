@@ -8,12 +8,14 @@
 
 ## POFE用例
 + 时间戳文件
+
 可以任取一份文件并将文件的哈希值存在链上作为文件存在的证明。
 
 这样，可以通过共享文件并让其他人计算校验，以此来证明在提交时你已拥有此文件。
 
 同时，通过共享包含此哈希值的交易链接，来证明执行交易时文件已存在。
 + 文档完整性
+
 政府组织可以发布数字法律文件，将散列值作为区块链文件存在的证明
 
 ## 应用概述
@@ -41,6 +43,5 @@ https://gitpod.io/#https://github.com/tendermint/starport/
 ```
 starport app github.com/user/pofe
 ```
-
-
-![](https://i.loli.net/2020/11/25/qR1bApyf63MsmVz.png)
+![](https://i.loli.net/2020/11/25/3Wva4ENOFw7qpHu.png)
+安装完毕会生成一个pofe文件夹，进入
