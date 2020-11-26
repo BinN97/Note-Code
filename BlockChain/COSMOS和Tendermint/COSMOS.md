@@ -66,8 +66,8 @@ starport type claim proof:string
 ```
 这就创建索赔类型了，添加相应的CLI命令、处理程序、消息、类型、查询程序等
 
-这样就创建了一个可以使用的应用程序，通过检查窗口来验证
-![](https://i.loli.net/2020/11/26/Ort2Z8NxqWosAvR.png)
+至此就创建了一个可以使用的应用程序，通过检查窗口来验证
+![](https://i.loli.net/2020/11/26/w46xkhGuWZ5LEAN.png)
 但还是需要修改程序
 
 ## 修改应用程序
@@ -77,6 +77,7 @@ package cli
 import(
 )
 ```
+最后，我们使用结构体里的<code>Proof</code>值来代替自动生成的唯一标识符<code>id</code>
 
 ## 提交一个文件存在证明
 
