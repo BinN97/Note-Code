@@ -39,7 +39,7 @@ make
 ```
 https://gitpod.io/#https://github.com/tendermint/starport/
 ```
-## 使用starport构建PoFE
+# 使用starport构建PoFE
 通过运行starport应用程序<code>github.com/user/pofe</code>来搭建我们的程序，从github下载pofe
 ```
 starport app github.com/user/pofe
@@ -57,19 +57,27 @@ starport serve
 会打开应用程序，看到以下的输出：
 ![](https://i.loli.net/2020/11/26/fqSdt4hDzMuFK9c.png)
 在浏览器打开<code>http://localhost:12345/</code>看到starport已为我们建立了一条区块链
-![](https://i.loli.net/2020/11/26/kcfShrugi67a5mo.png)
+![](https://i.loli.net/2020/11/26/Ort2Z8NxqWosAvR.png)
 
 ## 创建claim类型
 回到pofe目录下，创建一个带有<code>proof</code>字段的索赔类型<code>claim</code>：
 ```
 starport type claim proof:string
 ```
-这就创建索赔类型了，添加相应的CLI命令、处理程序、消息、类型、查询程序和
+这就创建索赔类型了，添加相应的CLI命令、处理程序、消息、类型、查询程序等
 
+这样就创建了一个可以使用的应用程序，通过检查窗口来验证
+![](https://i.loli.net/2020/11/26/Ort2Z8NxqWosAvR.png)
+但还是需要修改程序
 
 ## 修改应用程序
-实现一个接口，允许用户将文件哈希值上传到区块链，在<code>./x/pofe/client/cli/txClaim.go</code>
+需要实现一个接口，用户无需上传文件本身而直接上传文件哈希值，在<code>./x/pofe/client/cli/txClaim.go</code>来实现
+```
+package cli
+import(
+)
+```
 
 ## 提交一个文件存在证明
 
-## 创建一个界面
+# 创建界面
