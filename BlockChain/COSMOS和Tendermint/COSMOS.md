@@ -23,15 +23,16 @@
 
 ## 需求
 Starport：区块链框架定制工具
-安装：
+安装starport：
 ```
-npm install -g @tendermint/starport
+git clone https://github.com/tendermint/starport
 ```
+下载完毕进入文件夹执行make，就可以使用构建应用了。
 ```
-git clone https://github.com/tendermint/starport @@ cd starport @@ make
+cd starport
+make
 ```
 ![](https://i.loli.net/2020/11/25/qR1bApyf63MsmVz.png)
-这一步安装完毕，就可以使用starport了。
 
 当然，也可以使用在线编辑环境[Starport environment](https://gitpod.io/#https://github.com/tendermint/starport/
 )
@@ -39,9 +40,36 @@ git clone https://github.com/tendermint/starport @@ cd starport @@ make
 https://gitpod.io/#https://github.com/tendermint/starport/
 ```
 ## 使用starport构建PoFE
-通过运行starport来搭建应用程序
+通过运行starport应用程序<code>github.com/user/pofe</code>来搭建我们的程序，从github下载pofe
 ```
 starport app github.com/user/pofe
 ```
+下载完毕，显示如下：
 ![](https://i.loli.net/2020/11/25/3Wva4ENOFw7qpHu.png)
-安装完毕会生成一个pofe文件夹，进入
+安装，提示需要缺失protoc，安装后重新执行：
+![](https://i.loli.net/2020/11/26/nYJG35LEkZgtzHm.png)
+
+## 运行应用程序
+在安装完毕会新生成一个pofe文件夹，在此打开终端，运行
+```
+starport serve
+```
+会打开应用程序，看到以下的输出：
+![](https://i.loli.net/2020/11/26/fqSdt4hDzMuFK9c.png)
+在浏览器打开<code>http://localhost:12345/</code>看到starport已为我们建立了一条区块链
+![](https://i.loli.net/2020/11/26/kcfShrugi67a5mo.png)
+
+## 创建claim类型
+回到pofe目录下，创建一个带有<code>proof</code>字段的索赔类型<code>claim</code>：
+```
+starport type claim proof:string
+```
+这就创建索赔类型了，添加相应的CLI命令、处理程序、消息、类型、查询程序和
+
+
+## 修改应用程序
+实现一个接口，允许用户将文件哈希值上传到区块链，在<code>./x/pofe/client/cli/txClaim.go</code>
+
+## 提交一个文件存在证明
+
+## 创建一个界面
