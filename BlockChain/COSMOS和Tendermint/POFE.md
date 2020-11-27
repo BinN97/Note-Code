@@ -74,11 +74,90 @@ starport type claim proof:string
 需要实现一个接口，用户无需上传文件本身而直接上传文件哈希值，在<code>./x/pofe/client/cli/txClaim.go</code>来实现
 ```
 package cli
-import(
+
+import (
+	"bufio"
+	"crypto/sha256"
+	"encoding/hex"
+	"io/ioutil"
+
+	"github.com/spf13/cobra"
+
+	"github.com/cosmos/cosmos-sdk/client/context"
+	"github.com/cosmos/cosmos-sdk/codec"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/x/auth"
+	"github.com/cosmos/cosmos-sdk/x/auth/client/utils"
+	"github.com/lukitsbrian/poe/x/pofe/types"
 )
+
+// CLI transaction command to create a claim
+func GetCmdCreateClaim(cdc *codec.Codec) *cobra.Command {
+	return &cobra.Command{
+		Use:   "create-claim [path-to-file]",
+		Short: "Creates a new claim from a path to a file",
+		Args:  cobra.MinimumNArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			// accept a filepath, read the file, and hash it
+			hasher := sha256.New()
+			s, _ := ioutil.ReadFile(args[0])
+			hasher.Write(s)
+			argsProof := hex.EncodeToString(hasher.Sum(nil))
+
+			// automatically scaffolded by `starport type`
+			cliCtx := context.NewCLIContext().WithCodec(cdc)
+			inBuf := bufio.NewReader(cmd.InOrStdin())
+			txBldr := auth.NewTxBuilderFromCLI(inBuf).WithTxEncoder(utils.GetTxEncoder(cdc))
+			msg := types.NewMsgCreateClaim(cliCtx.GetFromAddress(), string(argsProof))
+			err := msg.ValidateBasic()
+			if err != nil {
+				return err
+			}
+			return utils.GenerateOrBroadcastMsgs(cliCtx, txBldr, []sdk.Msg{msg})
+		},
+	}
+}
+
 ```
-最后，我们使用结构体里的<code>Proof</code>值来代替自动生成的唯一标识符<code>id</code>
+最后，我们使用结构体里的<code>Proof</code>值来代替自动生成的唯一标识符<code>id</code>，这可以更容易在数据库中查询<code>Proof</code>，修改<code>./x/pofe/keeper/claim.go</code>以及其他使用<code>CreateClaim</code>方法的文件，用<code>claim.Proof</code>代替<code>claim.ID</code>
+```
+func (k Keeper) CreateClaim(ctx sdk.Context, claim types.Claim) {
+	store := ctx.KVStore(k.storeKey)
+	key := []byte(types.ClaimPrefix + claim.Proof)
+	value := k.cdc.MustMarshalBinaryLengthPrefixed(claim)
+	store.Set(key, value)
+}
+```
+<!--按照设计，需要创建creator和文件的哈希Proof，为了教程的目的，保留结构体中的<code>ID</code>。如果希望清理结构体和方法，从<code>./x/pofe/types/TypeClaim.go</code>的<code>Claim</code>结构中删除<code>ID</code>字段，如下：
+```
+type Claim struct {
+	Creator sdk.AccAddress `json:"creator" yaml:"creator"`
+	Proof   string         `json:"proof" yaml:"proof"`
+}
+```
+-->
 
 ## 提交一个文件存在证明
+一旦创建完毕，运行<code>starport serve</code>，程序构建为<code>pofed</code>的二进制文件，利用文件去提交一个索赔
+```
+pofecli tx pofe create-claim $(which pofed) --from user1
+```
+交易确认之后，运行
+```
+profecli q pofe list-claim
+```
+输出
+```
+[
+  {
+    "creator": "cosmos165hphx98d767c99gtm0n7gevq2q0nwrg75pfkd",
+    "proof": "534f056e58115dd106d026e00da22a32f8c776a0cd5b3dd6431598d73b5f623c"
+  }
+]
 
+```
+这样就索赔就存在于区块链上了，如果需要删除命令，只需要运行：
+```
+pofecli tx pofe delete-claim 534f056e58115dd106d026e00da22a32f8c776a0cd5b3dd6431598d73b5f623c --from user1
+```
 # 创建界面
