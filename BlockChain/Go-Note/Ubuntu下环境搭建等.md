@@ -1,3 +1,4 @@
+2020.11.19
 [官网](https://golang.org)
 
 [安装指示](https://golang.org/doc/install)
@@ -21,3 +22,5 @@ ps:
 go env -w GOSUMDB=off
 go env -w GOPROXY=https://goproxy.cn,direct
 ```
+2021.1.13
+ubuntu实在是卡，可能电脑不行了，总之，放弃在其下折腾了，换用WSL子系统了。
